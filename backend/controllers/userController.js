@@ -3,7 +3,6 @@ const path = require('path');
 
 const usersFilePath = path.join(__dirname, '../data/users.json');
 
-// Gauti vartotoją pagal username
 exports.getUserByUsername = (req, res) => {
   const users = JSON.parse(fs.readFileSync(usersFilePath));
   const user = users.find((u) => u.username === req.params.username);
@@ -14,7 +13,6 @@ exports.getUserByUsername = (req, res) => {
   }
 };
 
-// Atnaujinti vartotojo duomenis
 exports.updateUser = (req, res) => {
   const users = JSON.parse(fs.readFileSync(usersFilePath));
   const index = users.findIndex((u) => u.username === req.params.username);
