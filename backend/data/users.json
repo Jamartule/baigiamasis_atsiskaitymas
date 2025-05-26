@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "username": "Marta",
+    "password": "Marta123",
+    "role": "admin",
+    "email": "marta.zaldokaite@gmail.com",
+    "phone": "+3706352145"
+  },
+  {
+    "id": 2,
+    "username": "martule",
+    "password": "martule123",
+    "role": "user"
+  },
+  {
+    "id": 3,
+    "username": "user2",
+    "password": "user456",
+    "role": "user"
+  }
+]

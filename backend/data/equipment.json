@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "name": "Kompiuteris",
+    "description": "Geras kompiuteris",
+    "status": "paskelbta"
+  },
+  {
+    "id": 2,
+    "name": "Projektorius",
+    "description": "HD projektorius su HDMI",
+    "status": "paskelbta"
+  },
+  {
+    "id": 3,
+    "name": "Fotoaparatas",
+    "description": "Profesionalus DSLR fotoaparatas",
+    "status": "paskelbta"
+  },
+  {
+    "id": 4,
+    "name": "Nešiojamas kompiuteris",
+    "description": "Lengvas ir galingas",
+    "status": "paskelbta"
+  },
+  {
+    "id": 5,
+    "name": "3D spausdintuvas",
+    "description": "Naujausios kartos spausdintuvas",
+    "status": "paskelbta"
+  },
+  {
+    "id": 6,
+    "name": "Garsiakalbiai",
+    "description": "Kokybiški audio garsiakalbiai",
+    "status": "paskelbta"
+  },
+  {
+    "id": 7,
+    "name": "Monitorius",
+    "description": "27 colių LED monitorius",
+    "status": "paskelbta"
+  },
+  {
+    "id": 8,
+    "name": "Rašalinis spausdintuvas",
+    "description": "Rašalinis spausdintuvas A4",
+    "status": "paskelbta"
+  },
+  {
+    "id": 9,
+    "name": "Skeneris",
+    "description": "A4 formato skeneris",
+    "status": "paskelbta"
+  },
+  {
+    "id": 10,
+    "name": "Planšetė",
+    "description": "Planšetinis kompiuteris su Android",
+    "status": "paskelbta"
+  },
+  {
+    "id": 11,
+    "name": "Virtualios realybės akiniai",
+    "description": "VR akiniai",
+    "status": "paskelbta"
+  },
+  {
+    "id": 12,
+    "name": "Web kamera",
+    "description": "HD web kamera",
+    "status": "paskelbta"
+  }
+]
