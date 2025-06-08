@@ -22,6 +22,11 @@ function NewReservation({ user }) {
       (v) => v.id === selectedVariant
     );
 
+    if (selectedEquipment?.variants && !selectedVariant) {
+      setMessage('Prašome pasirinkti įrangos modelį.');
+      return;
+    }
+
     const reservationData = {
       username: user.username,
       equipmentName:
@@ -52,7 +57,7 @@ function NewReservation({ user }) {
             value={selectedEquipmentId}
             onChange={(e) => {
               setSelectedEquipmentId(e.target.value);
-              setSelectedVariant(''); // išvalom variantą jei pasirenkama kita įranga
+              setSelectedVariant('');
             }}
             required
           >

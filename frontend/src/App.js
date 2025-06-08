@@ -7,6 +7,7 @@ import {
   Navigate,
 } from 'react-router-dom';
 import Login from './components/Login';
+import Home from './components/Home';
 import EquipmentList from './components/EquipmentList';
 import EquipmentDetails from './components/EquipmentDetails';
 import ReservationList from './components/ReservationList';
@@ -23,7 +24,7 @@ function App() {
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">
-            Įranga
+            Pradžia
           </Link>
           <button
             className="navbar-toggler"
@@ -36,15 +37,24 @@ function App() {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav me-auto">
               <li className="nav-item">
-                <Link className="nav-link" to="/reservations">
-                  Mano rezervacijos
+                <Link className="nav-link" to="/equipment">
+                  Įranga
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/admin">
-                  Administratoriaus paskyra
-                </Link>
-              </li>
+              {user && (
+                <li className="nav-item">
+                  <Link className="nav-link" to="/reservations">
+                    Mano rezervacijos
+                  </Link>
+                </li>
+              )}
+              {user?.role === 'admin' && (
+                <li className="nav-item">
+                  <Link className="nav-link" to="/admin">
+                    Administratoriaus paskyra
+                  </Link>
+                </li>
+              )}
             </ul>
             <ul className="navbar-nav">
               {user ? (
@@ -78,7 +88,8 @@ function App() {
       <div className="container mt-4">
         <Routes>
           <Route path="/login" element={<Login setUser={setUser} />} />
-          <Route path="/" element={<EquipmentList />} />
+          <Route path="/" element={<Home user={user} />} />
+          <Route path="/equipment" element={<EquipmentList />} />
           <Route path="/equipment/:id" element={<EquipmentDetails />} />
           <Route
             path="/reservations"

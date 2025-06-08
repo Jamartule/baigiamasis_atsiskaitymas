@@ -14,8 +14,8 @@ function AdministratoriausPaskyra() {
   };
 
   const handleChange = (id, field, value) => {
-    setReservations(
-      reservations.map((r) => (r.id === id ? { ...r, [field]: value } : r))
+    setReservations((prev) =>
+      prev.map((r) => (r.id === id ? { ...r, [field]: value } : r))
     );
   };
 
@@ -27,6 +27,8 @@ function AdministratoriausPaskyra() {
       status: r.status,
       date: r.date,
       comment: r.comment,
+      adminComment: r.adminComment || '',
+      image: r.image || '',
     };
     await updateReservation(r.id, updatedData);
     load();
@@ -54,6 +56,14 @@ function AdministratoriausPaskyra() {
         {reservations.map((r) => (
           <div className="col-md-6 mb-3" key={r.id}>
             <div className={`card border-${getStatusColor(r.status)} shadow`}>
+              {r.image && (
+                <img
+                  src={`/images/${r.image}`}
+                  alt={r.equipmentName}
+                  className="card-img-top"
+                  style={{ maxHeight: '200px', objectFit: 'cover' }}
+                />
+              )}
               <div
                 className={`card-header bg-${getStatusColor(
                   r.status
@@ -65,12 +75,16 @@ function AdministratoriausPaskyra() {
                 <p>
                   <strong>Naudotojas:</strong> {r.username}
                 </p>
+
+                <label>Data</label>
                 <input
                   type="date"
                   value={r.date}
                   onChange={(e) => handleChange(r.id, 'date', e.target.value)}
                   className="form-control mb-2"
                 />
+
+                <label>Statusas</label>
                 <select
                   className="form-select mb-2"
                   value={r.status}
@@ -81,14 +95,24 @@ function AdministratoriausPaskyra() {
                   <option value="atmesta">Atmesta</option>
                   <option value="vykdoma">Vykdoma</option>
                 </select>
+
+                <label>Vartotojo komentaras</label>
                 <textarea
                   value={r.comment || ''}
-                  onChange={(e) =>
-                    handleChange(r.id, 'comment', e.target.value)
-                  }
-                  placeholder="Komentaras..."
+                  readOnly
                   className="form-control mb-2"
                 />
+
+                <label>Administratoriaus pastaba</label>
+                <textarea
+                  value={r.adminComment || ''}
+                  onChange={(e) =>
+                    handleChange(r.id, 'adminComment', e.target.value)
+                  }
+                  placeholder="Administratoriaus pastaba..."
+                  className="form-control mb-2"
+                />
+
                 <button
                   onClick={() => saveReservation(r)}
                   className="btn btn-primary btn-sm"

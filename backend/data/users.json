@@ -11,7 +11,9 @@
     "id": 2,
     "username": "martule",
     "password": "martule123",
-    "role": "user"
+    "role": "user",
+    "email": "marta.zaldokaite@gmail.com",
+    "phone": "+3706352145"
   },
   {
     "id": 3,
