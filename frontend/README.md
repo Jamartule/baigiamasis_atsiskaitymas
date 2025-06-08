@@ -1,6 +1,6 @@
 # Baigiamasis projektas – Įrangos rezervacijos ir administravimo sistema
 
-Šis projektas yra mano baigiamojo darbo dalis, sukurtas React, Node.js (Express) ir JSON (arba MongoDB, jei naudosi). Sistema leidžia naudotojams rezervuoti įrangą, o administratoriams – valdyti įrangą ir rezervacijas.
+Šis projektas yra mano baigiamojo darbo dalis, sukurtas React, Node.js (Express) ir JSON (arba MongoDB galima būtų naudoti, aš naudojau tik json.). Sistema leidžia naudotojams rezervuoti įrangą, o administratoriams – valdyti įrangą ir rezervacijas.
 
 ---
 
@@ -19,7 +19,7 @@ Vartotojai (prisijungę):
 
 - Prideda naują įrangą
 - Atnaujina esamą įrangą
-- Keičia įrangos būseną (paskelbta / juodraštis)
+- Keičia įrangos būseną
 - Peržiūri visas rezervacijas
 - Keičia rezervacijos būseną (laukianti / patvirtinta / atmesta / vykdoma)
 - Matomi vartotojų komentarai prie rezervacijų
@@ -37,20 +37,10 @@ Vartotojai (prisijungę):
 
 ---
 
-# Papildoma
+# Papildomai
 
 - Kiekvienas įrangos elementas turi nuotrauką
 
 - Dizainas pritaikytas prie ekrano dydžio (responsive layout)
 
 ---
-
-# Paleidimo instrukcija
-
-1.  Backend paleidimas
-
-```bash
-cd backend
-npm install
-npm start
-```

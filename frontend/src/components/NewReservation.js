@@ -3,7 +3,8 @@ import { createReservation, getEquipment } from '../api';
 
 function NewReservation({ user }) {
   const [equipment, setEquipment] = useState([]);
-  const [selectedEquipment, setSelectedEquipment] = useState('');
+  const [selectedEquipmentId, setSelectedEquipmentId] = useState('');
+  const [selectedVariant, setSelectedVariant] = useState('');
   const [date, setDate] = useState('');
   const [message, setMessage] = useState('');
 
@@ -13,17 +14,32 @@ function NewReservation({ user }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const selectedEquipment = equipment.find(
+      (e) => e.id === parseInt(selectedEquipmentId)
+    );
+    const variant = selectedEquipment?.variants?.find(
+      (v) => v.id === selectedVariant
+    );
+
+    const reservationData = {
+      username: user.username,
+      equipmentName:
+        selectedEquipment.name + (variant ? ` - ${variant.model}` : ''),
+      date,
+    };
+
     try {
-      await createReservation({
-        username: user.username,
-        equipmentName: selectedEquipment,
-        date: date,
-      });
+      await createReservation(reservationData);
       setMessage('Rezervacija pateikta sėkmingai!');
     } catch (error) {
       setMessage('Rezervacija nepavyko');
     }
   };
+
+  const selectedEquipment = equipment.find(
+    (e) => e.id === parseInt(selectedEquipmentId)
+  );
 
   return (
     <div className="container mt-4">
@@ -33,18 +49,41 @@ function NewReservation({ user }) {
           <label>Pasirinkite įrangą</label>
           <select
             className="form-select"
-            value={selectedEquipment}
-            onChange={(e) => setSelectedEquipment(e.target.value)}
+            value={selectedEquipmentId}
+            onChange={(e) => {
+              setSelectedEquipmentId(e.target.value);
+              setSelectedVariant(''); // išvalom variantą jei pasirenkama kita įranga
+            }}
             required
           >
             <option value="">Pasirinkite</option>
             {equipment.map((eq) => (
-              <option key={eq.id} value={eq.name}>
+              <option key={eq.id} value={eq.id}>
                 {eq.name}
               </option>
             ))}
           </select>
         </div>
+
+        {selectedEquipment?.variants && (
+          <div className="mb-3">
+            <label>Pasirinkite modelį</label>
+            <select
+              className="form-select"
+              value={selectedVariant}
+              onChange={(e) => setSelectedVariant(e.target.value)}
+              required
+            >
+              <option value="">Pasirinkite modelį</option>
+              {selectedEquipment.variants.map((v) => (
+                <option key={v.id} value={v.id}>
+                  {v.model}
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
+
         <div className="mb-3">
           <label>Data</label>
           <input
@@ -55,9 +94,11 @@ function NewReservation({ user }) {
             required
           />
         </div>
+
         <button type="submit" className="btn btn-primary">
           Rezervuoti
         </button>
+
         {message && <p className="mt-2">{message}</p>}
       </form>
     </div>
