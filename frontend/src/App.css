@@ -1,0 +1,17 @@
+.nav-link {
+  color: white !important;
+}
+
+.nav-link:hover {
+  color: #ccc !important;
+}
+
+.btn-outline-light {
+  color: white !important;
+  border-color: white !important;
+}
+
+.btn-outline-light:hover {
+  background-color: white !important;
+  color: black !important;
+}
