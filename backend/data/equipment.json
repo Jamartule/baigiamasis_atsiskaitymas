@@ -3,72 +3,84 @@
     "id": 1,
     "name": "Kompiuteris",
     "description": "Geras kompiuteris",
-    "status": "paskelbta"
+    "status": "paskelbta",
+    "image": "/images/stacionarus.jpg"
   },
   {
     "id": 2,
     "name": "Projektorius",
     "description": "HD projektorius su HDMI",
-    "status": "paskelbta"
+    "status": "paskelbta",
+    "image": "/images/projektorius.jpg"
   },
   {
     "id": 3,
     "name": "Fotoaparatas",
     "description": "Profesionalus DSLR fotoaparatas",
-    "status": "paskelbta"
+    "status": "paskelbta",
+    "image": "/images/fotoaparatas.jpg"
   },
   {
     "id": 4,
     "name": "Nešiojamas kompiuteris",
     "description": "Lengvas ir galingas",
-    "status": "paskelbta"
+    "status": "paskelbta",
+    "image": "/images/laptopass.jpg"
   },
   {
     "id": 5,
     "name": "3D spausdintuvas",
     "description": "Naujausios kartos spausdintuvas",
-    "status": "paskelbta"
+    "status": "paskelbta",
+    "image": "/images/3Dspausdintuvas.jpeg"
   },
   {
     "id": 6,
     "name": "Garsiakalbiai",
     "description": "Kokybiški audio garsiakalbiai",
-    "status": "paskelbta"
+    "status": "paskelbta",
+    "image": "/images/garsiakalbis.jpg"
   },
   {
     "id": 7,
     "name": "Monitorius",
     "description": "27 colių LED monitorius",
-    "status": "paskelbta"
+    "status": "paskelbta",
+    "image": "/images/monitorius.jpg"
   },
   {
     "id": 8,
     "name": "Rašalinis spausdintuvas",
     "description": "Rašalinis spausdintuvas A4",
-    "status": "paskelbta"
+    "status": "paskelbta",
+    "image": "/images/rasalinisspausdintuvas.jpg"
   },
   {
     "id": 9,
     "name": "Skeneris",
     "description": "A4 formato skeneris",
-    "status": "paskelbta"
+    "status": "paskelbta",
+    "image": "/images/skaneriss.jpg"
   },
   {
     "id": 10,
     "name": "Planšetė",
     "description": "Planšetinis kompiuteris su Android",
-    "status": "paskelbta"
+    "status": "paskelbta",
+    "image": "/images/plancete.jpg"
   },
   {
     "id": 11,
     "name": "Virtualios realybės akiniai",
     "description": "VR akiniai",
-    "status": "paskelbta"
+    "status": "paskelbta",
+    "image": "/images/virtualusakiniai.jpg"
   },
   {
     "id": 12,
     "name": "Web kamera",
     "description": "HD web kamera",
-    "status": "paskelbta"
+    "status": "paskelbta",
+    "image": "/images/webkamera.jpg"
   }
 ]
