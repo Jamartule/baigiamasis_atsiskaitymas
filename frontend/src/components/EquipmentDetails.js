@@ -18,9 +18,47 @@ function EquipmentDetails() {
       <p>{equipment.description}</p>
       <p>Statusas: {equipment.status}</p>
 
-      <Link to="/new-reservation" className="btn btn-success">
-        Rezervuoti šią įrangą
-      </Link>
+      {equipment.variants ? (
+        <div className="row">
+          {equipment.variants.map((variant) => (
+            <div className="col-md-6 mb-4" key={variant.id}>
+              <div className="card">
+                <img
+                  src={`/images/${variant.image}`}
+                  className="card-img-top"
+                  alt={variant.model}
+                />
+                <div className="card-body">
+                  <h5 className="card-title">{variant.model}</h5>
+                  <p className="card-text">{variant.description}</p>
+                  <Link
+                    to="/new-reservation"
+                    className="btn btn-success"
+                    state={{ equipmentId: equipment.id, model: variant.model }}
+                  >
+                    Rezervuoti šį modelį
+                  </Link>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div>
+          <img
+            src={equipment.image}
+            alt={equipment.name}
+            style={{
+              maxWidth: '300px',
+              display: 'block',
+              marginBottom: '1rem',
+            }}
+          />
+          <Link to="/new-reservation" className="btn btn-success">
+            Rezervuoti šią įrangą
+          </Link>
+        </div>
+      )}
     </div>
   );
 }

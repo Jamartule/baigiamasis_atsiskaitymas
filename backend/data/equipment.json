@@ -4,7 +4,20 @@
     "name": "Kompiuteris",
     "description": "Geras kompiuteris",
     "status": "paskelbta",
-    "image": "/images/stacionarus.jpg"
+    "variants": [
+      {
+        "id": "1a",
+        "model": "Dell Inspiron",
+        "image": "dell.jpg",
+        "description": "Dell nešiojamas kompiuteris su i5 procesoriumi"
+      },
+      {
+        "id": "1b",
+        "model": "HP Pavilion",
+        "image": "hp.jpg",
+        "description": "HP kompiuteris su i7 procesoriumi"
+      }
+    ]
   },
   {
     "id": 2,
