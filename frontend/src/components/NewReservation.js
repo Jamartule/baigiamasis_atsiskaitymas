@@ -7,10 +7,13 @@ function NewReservation({ user }) {
   const [selectedVariant, setSelectedVariant] = useState('');
   const [date, setDate] = useState('');
   const [message, setMessage] = useState('');
+  const [messageType, setMessageType] = useState('');
 
   useEffect(() => {
     getEquipment().then((res) => setEquipment(res.data));
   }, []);
+
+  const today = new Date().toISOString().split('T')[0];
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,11 +25,6 @@ function NewReservation({ user }) {
       (v) => v.id === selectedVariant
     );
 
-    if (selectedEquipment?.variants && !selectedVariant) {
-      setMessage('Prašome pasirinkti įrangos modelį.');
-      return;
-    }
-
     const reservationData = {
       username: user.username,
       equipmentName:
@@ -37,8 +35,17 @@ function NewReservation({ user }) {
     try {
       await createReservation(reservationData);
       setMessage('Rezervacija pateikta sėkmingai!');
+      setMessageType('success');
+
+      setSelectedEquipmentId('');
+      setSelectedVariant('');
+      setDate('');
     } catch (error) {
-      setMessage('Rezervacija nepavyko');
+      setMessage(
+        error.response?.data?.message ||
+          'Rezervacija nepavyko. Patikrinkite duomenis.'
+      );
+      setMessageType('danger');
     }
   };
 
@@ -94,6 +101,7 @@ function NewReservation({ user }) {
           <input
             type="date"
             className="form-control"
+            min={today}
             value={date}
             onChange={(e) => setDate(e.target.value)}
             required
@@ -104,7 +112,11 @@ function NewReservation({ user }) {
           Rezervuoti
         </button>
 
-        {message && <p className="mt-2">{message}</p>}
+        {message && (
+          <div className={`alert alert-${messageType} mt-3`} role="alert">
+            {message}
+          </div>
+        )}
       </form>
     </div>
   );

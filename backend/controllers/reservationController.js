@@ -17,6 +17,27 @@ exports.getById = async (req, res) => {
 
 exports.create = async (req, res) => {
   const data = await fs.readJson(filePath);
+  const { equipmentName, date } = req.body;
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  const selectedDate = new Date(date);
+  selectedDate.setHours(0, 0, 0, 0);
+
+  if (selectedDate < today) {
+    return res.status(400).json({ message: 'Negalima rezervuoti į praeitį.' });
+  }
+
+  const alreadyReserved = data.some(
+    (item) => item.equipmentName === equipmentName && item.date === date
+  );
+  if (alreadyReserved) {
+    return res
+      .status(400)
+      .json({ message: 'Ši įranga jau rezervuota tą dieną.' });
+  }
+
   const newItem = { id: Date.now(), status: 'laukianti', ...req.body };
   data.push(newItem);
   await fs.writeJson(filePath, data);
